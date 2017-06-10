@@ -15,7 +15,7 @@ import { User } from '../shared/models/user';
         }
     `],
     template: `        
-        <form #form="ngForm">
+        <form #form="ngForm" (submit)="onSubmit()" *ngIf="active">
             
             {{ form.valid }}
             
@@ -43,4 +43,11 @@ import { User } from '../shared/models/user';
 })
 export class UserFormComponent {
     newUser: User = new User();
+    active: boolean = true;
+
+    onSubmit() {
+        this.newUser = new User();
+        this.active = false;
+        setTimeout(() => this.active = true, 0)
+    }
 }
