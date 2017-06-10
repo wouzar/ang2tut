@@ -24,4 +24,8 @@ export class AppComponent {
         console.log(this.activeUser);
     }
 
+    onUserCreated(event) {
+        this.users.push(event.user);
+    }
+
 }
